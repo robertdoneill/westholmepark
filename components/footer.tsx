@@ -9,19 +9,19 @@ export function Footer() {
         <div className="flex items-center gap-3">
           <HexagonIcon className="sm:block hidden w-5 h-5 text-muted-foreground fill-current" />
           <p className="text-center">
-            Build by{" "}
+            Our english website {" "}
             <Link
               className="px-1 underline underline-offset-2"
-              href="https://github.com/nisabmohd"
+              href="https://westholmepark.com"
             >
-              nisabmohd
+              Westholme Park
             </Link>
-            . The source code is available on{" "}
+            . Beautifully designed property by{" "}
             <Link
               className="px-1 underline underline-offset-2"
-              href="https://github.com/nisabmohd/Docs-Stater-Template"
+              href="https://afinity.house"
             >
-              GitHub
+            Affinity House
             </Link>
             .
           </p>

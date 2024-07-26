@@ -10,23 +10,11 @@ import { SheetClose } from "@/components/ui/sheet";
 
 export const NAVLINKS = [
   {
-    title: "Documentation",
+    title: "文档",
     href: `/docs/${page_routes[0].href}`,
   },
   {
-    title: "Examples",
-    href: "#",
-  },
-  {
-    title: "Guides",
-    href: "#",
-  },
-  {
-    title: "Community",
-    href: "#",
-  },
-  {
-    title: "Blog",
+    title: "画廊",
     href: "#",
   },
 ];
@@ -79,7 +67,7 @@ export function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2.5">
       <HexagonIcon className="w-7 h-7 text-muted-foreground fill-current" />
-      <h2 className="text-md font-bold">template/docs</h2>
+      <h2 className="text-md font-bold">Westholme Park</h2>
     </Link>
   );
 }
