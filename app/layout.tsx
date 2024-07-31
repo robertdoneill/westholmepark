@@ -7,10 +7,10 @@ import { Footer } from "@/components/footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Docs stater template",
+  title: "UCLA女生共享住宿",
   metadataBase: new URL("https://docstemplate.vercel.app/"),
   description:
-    "This comprehensive documentation template, crafted with Next.js and available as open-source, delivers a sleek and responsive design, tailored to meet all your project documentation requirements.",
+    "位于UCLA对面的豪华女生共享宿舍，提供共享和私人卧室。",
 };
 
 export default function RootLayout({
