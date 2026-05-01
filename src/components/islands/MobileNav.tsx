@@ -61,6 +61,13 @@ export function MobileNav({ links, currentPath }: Props) {
                   </a>
                 );
               })}
+              <a
+                href="/contact"
+                onClick={() => setOpen(false)}
+                className="mt-4 bg-primary px-3 py-3 text-center text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+              >
+                Check Availability
+              </a>
             </nav>
           </div>
         </>

@@ -1,39 +1,45 @@
 ---
+const imageBase = 'https://images.westholmepark.com';
 ---
 
-<section class="relative overflow-hidden">
+<section class="relative min-h-[calc(100vh-4rem)] overflow-hidden">
   <div class="absolute inset-0 z-0">
-    <div class="absolute inset-0 bg-gradient-to-b from-background/10 via-background/60 to-background z-10" />
-    <div class="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/80 z-10" />
+    <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-black/30 to-background z-10" />
+    <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-transparent z-10" />
     <img
-      src="/images/hero/hero-1.jpg"
-      alt="Westholme Park exterior"
+      src={`${imageBase}/courtyard-arches-seating.jpg`}
+      alt="Westholme Park courtyard with arched entry and outdoor seating"
       class="w-full h-full object-cover"
-      onerror="this.style.display='none'"
     />
-    <div class="absolute inset-0 bg-primary/5 dark:bg-primary/10 z-0" />
   </div>
 
-  <div class="relative z-10 mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8 lg:py-40">
-    <div class="max-w-3xl">
-      <h1 class="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-7xl text-balance">
-        A home designed for <span class="text-primary">female students</span> at UCLA
+  <div class="relative z-10 mx-auto flex min-h-[calc(100vh-4rem)] max-w-7xl items-end px-4 pb-14 pt-24 sm:px-6 sm:pb-20 lg:px-8">
+    <div class="max-w-4xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-white/80">Female student housing near UCLA</p>
+      <h1 class="mt-4 max-w-3xl text-5xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl text-balance">
+        Your UCLA home, already put together.
       </h1>
-      <p class="mt-6 text-lg leading-8 text-muted-foreground max-w-2xl text-balance">
-        Fully furnished shared and private bedrooms in a beautifully maintained property across from campus. Flexible leases, all utilities included.
+      <p class="mt-6 max-w-2xl text-lg leading-8 text-white/85 sm:text-xl text-balance">
+        Fully furnished rooms, welcoming shared spaces, and a calmer move-in experience for students who want comfort, community, and more time for campus life.
       </p>
+      <div class="mt-8 flex flex-wrap gap-3 text-sm font-medium text-white/90">
+        <span class="border border-white/25 bg-white/10 px-3 py-1.5 backdrop-blur">Walkable to UCLA</span>
+        <span class="border border-white/25 bg-white/10 px-3 py-1.5 backdrop-blur">Fully furnished</span>
+        <span class="border border-white/25 bg-white/10 px-3 py-1.5 backdrop-blur">Utilities included</span>
+        <span class="border border-white/25 bg-white/10 px-3 py-1.5 backdrop-blur">Managed locally</span>
+      </div>
       <div class="mt-10 flex flex-wrap gap-4">
         <a
-          href="/rooms"
-          class="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm hover:opacity-90 transition-opacity"
+          href="/contact"
+          class="inline-flex items-center justify-center bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-black/20 transition-opacity hover:opacity-90"
         >
-          View Rooms & Pricing
+          Check Availability
         </a>
         <a
-          href="/contact"
-          class="inline-flex items-center justify-center rounded-lg border border-border bg-background px-6 py-3 text-sm font-semibold text-foreground shadow-sm hover:bg-muted transition-colors"
+          href="/gallery"
+          class="inline-flex items-center justify-center border border-white/35 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/20"
         >
-          Schedule a Tour
+          See the House
         </a>
       </div>
     </div>

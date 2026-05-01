@@ -1,13 +1,13 @@
 ---
 const amenities = [
-  { icon: 'wifi', title: 'High-Speed WiFi', desc: 'Gigabit fiber throughout the property' },
-  { icon: 'utensils', title: 'Modern Kitchen', desc: 'Fully equipped with appliances & cookware' },
-  { icon: 'sofa', title: 'Furnished Common Areas', desc: 'Living room, dining, and study spaces' },
-  { icon: 'washing-machine', title: 'In-Unit Laundry', desc: 'Washers & dryers on every floor' },
-  { icon: 'shield-check', title: 'Secure Building', desc: 'Keyless entry & security cameras' },
-  { icon: 'dumbbell', title: 'Fitness Area', desc: 'On-site gym & yoga space' },
-  { icon: 'car', title: 'Parking Available', desc: 'Off-street parking for residents' },
-  { icon: 'leaf', title: 'Outdoor Space', desc: 'Garden patio & outdoor seating' },
+  { icon: 'wifi', title: 'Fast WiFi', desc: 'Reliable internet for lectures, studying, and streaming' },
+  { icon: 'utensils', title: 'Shared Kitchen', desc: 'Cook, meal prep, and settle into a real routine' },
+  { icon: 'sofa', title: 'Common Rooms', desc: 'Elegant spaces for studying, relaxing, and hosting friends' },
+  { icon: 'washing-machine', title: 'Laundry Access', desc: 'Laundry is on site, close, and easy to manage' },
+  { icon: 'shield-check', title: 'Secure Entry', desc: 'A managed property designed with student safety in mind' },
+  { icon: 'dumbbell', title: 'Room to Recharge', desc: 'Quiet corners and flexible spaces for daily balance' },
+  { icon: 'car', title: 'Parking Available', desc: 'Off-street parking options for residents' },
+  { icon: 'leaf', title: 'Courtyard Living', desc: 'Outdoor tables, greenery, and room to breathe' },
 ];
 
 const iconMap: Record<string, string> = {
@@ -24,14 +24,14 @@ const iconMap: Record<string, string> = {
 
 <section class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
   <div class="text-center max-w-2xl mx-auto reveal">
-    <h2 class="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Everything you need</h2>
-    <p class="mt-4 text-lg text-muted-foreground">All utilities and amenities included. Just bring your suitcase.</p>
+    <h2 class="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">The hard parts are handled</h2>
+    <p class="mt-4 text-lg text-muted-foreground">A furnished home base with the practical details already worked out.</p>
   </div>
 
   <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
     {amenities.map((a) => (
-      <div class="group rounded-xl border border-border bg-card p-6 transition-all hover:shadow-md hover:-translate-y-1 reveal">
-        <div class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+      <div class="group rounded-lg border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:shadow-md reveal">
+        <div class="inline-flex h-10 w-10 items-center justify-center bg-primary/10 text-primary">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={iconMap[a.icon]} />
         </div>
         <h3 class="mt-4 text-sm font-semibold text-card-foreground">{a.title}</h3>

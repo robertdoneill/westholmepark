@@ -1,5 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+
+const imageBase = 'https://images.westholmepark.com';
 ---
 
 <Layout title="About — Westholme Park" description="Learn about Westholme Park, our mission, and house rules.">
@@ -22,12 +24,11 @@ import Layout from '@/layouts/Layout.astro';
         </p>
       </div>
       <div class="reveal">
-        <div class="aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-muted">
+        <div class="aspect-[4/3] overflow-hidden rounded-lg border border-border bg-muted">
           <img
-            src="/images/common/living.jpg"
+            src={`${imageBase}/living-room-lounge.jpg`}
             alt="Common area"
             class="h-full w-full object-cover"
-            onerror="this.parentElement.classList.add('flex','items-center','justify-center');this.outerHTML='<span class=text-muted-foreground>Photo coming soon</span>'"
           />
         </div>
       </div>
@@ -44,7 +45,7 @@ import Layout from '@/layouts/Layout.astro';
           { title: 'Rent & Payments', desc: 'Rent is due on the 1st of each month. Late fees apply after the 5th.' },
           { title: 'Move-Out Notice', desc: '30 days written notice required unless otherwise specified in your lease.' },
         ].map((rule) => (
-          <div class="rounded-xl border border-border bg-card p-5">
+          <div class="rounded-lg border border-border bg-card p-5">
             <h3 class="font-semibold text-card-foreground">{rule.title}</h3>
             <p class="mt-1 text-sm text-muted-foreground">{rule.desc}</p>
           </div>
@@ -57,7 +58,7 @@ import Layout from '@/layouts/Layout.astro';
       <p class="mt-4 text-muted-foreground leading-relaxed">
         We're located directly across from the UCLA campus in Westwood, Los Angeles. Walk to class in minutes, or hop on the Big Blue Bus for easy access to Santa Monica and the rest of LA.
       </p>
-      <div class="mt-6 rounded-xl border border-border bg-muted p-6 text-center">
+      <div class="mt-6 rounded-lg border border-border bg-muted p-6 text-center">
         <p class="text-sm text-muted-foreground">Address</p>
         <p class="mt-1 text-lg font-medium text-foreground">Los Angeles, CA 90024</p>
         <p class="mt-1 text-sm text-muted-foreground">Near UCLA campus — exact address provided upon application.</p>

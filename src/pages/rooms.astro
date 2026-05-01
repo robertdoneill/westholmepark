@@ -1,54 +1,58 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import RoomCard from '@/components/astro/RoomCard.astro';
+
+const imageBase = 'https://images.westholmepark.com';
 ---
 
-<Layout title="Rooms & Pricing — Westholme Park" description="Private and shared bedrooms for female students near UCLA. Flexible leases, all-inclusive.">
+<Layout title="Rooms & Pricing — Westholme Park" description="Private, shared, and pod-style rooms for female students near UCLA. Furnished, managed, and move-in ready.">
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
     <div class="max-w-2xl reveal">
-      <h1 class="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">Rooms & Pricing</h1>
-      <p class="mt-4 text-lg text-muted-foreground">Every room includes furniture, utilities, WiFi, and access to all common areas. No hidden fees.</p>
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Rooms & Pricing</p>
+      <h1 class="mt-3 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">Find the room that fits your UCLA routine.</h1>
+      <p class="mt-4 text-lg text-muted-foreground">Every room includes furniture, WiFi, utilities, and access to the common spaces. Availability changes by lease cycle, so start with the room style that fits best.</p>
     </div>
 
     <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <RoomCard
         title="Private Bedroom"
         price="From $1,800/mo"
-        description="Your own fully furnished room with a twin XL bed, desk, closet, and natural light. Perfect for students who value privacy and quiet study time."
-        features={['Twin XL bed with mattress', 'Desk & ergonomic chair', 'Spacious closet', 'Large windows', 'Shared bathroom']}
-        image="/images/rooms/private/bedroom-1.jpg"
-        badge="Most Popular"
+        description="A furnished private room with study space, storage, and natural light for students who want a quieter home base."
+        features={['Twin XL bed', 'Desk and chair', 'Closet storage', 'Shared bathroom', 'Common room access']}
+        image={`${imageBase}/private-bedroom-bed-desk-window.jpg`}
+        badge="Best for privacy"
       />
       <RoomCard
         title="Shared Bedroom"
         price="From $1,200/mo"
-        description="Share a beautifully designed room with one roommate. Two beds, two desks, and plenty of storage in a spacious layout. Great for making friends."
-        features={['Two twin XL beds', 'Two desks & chairs', 'Individual closets', 'Roommate matching', 'Shared bathroom']}
-        image="/images/rooms/shared/bedroom-1.jpg"
+        description="A practical shared layout with desks and storage, ideal for students who want value and connection."
+        features={['Two desks', 'Individual storage', 'Shared layout', 'Shared bathroom', 'Common room access']}
+        image={`${imageBase}/double-study-bedroom-desks.jpg`}
+        badge="Best value"
       />
       <RoomCard
-        title="Master Suite"
-        price="From $2,400/mo"
-        description="Our largest private room with an en-suite bathroom, king bed option, and premium finishes throughout. The ultimate student living experience."
-        features={['King or queen bed', 'Private bathroom', 'Walk-in closet', 'Premium finishes', 'Private balcony']}
-        image="/images/rooms/private/master-1.jpg"
-        badge="Premium"
+        title="Pod Room"
+        price="Ask for availability"
+        description="A distinctive shared setup with built-in bunks, privacy curtains, wardrobes, and study stations."
+        features={['Built-in bunks', 'Privacy curtains', 'Wardrobes', 'Study desks', 'Shared bathroom']}
+        image={`${imageBase}/shared-pod-bunk-room-wide.jpg`}
+        badge="Limited"
       />
     </div>
 
-    <div class="mt-16 rounded-2xl border border-border bg-muted/30 p-8 sm:p-10 reveal">
-      <h2 class="text-xl font-semibold text-foreground">What's included in every room</h2>
+    <div class="mt-16 rounded-lg border border-border bg-muted/30 p-8 sm:p-10 reveal">
+      <h2 class="text-xl font-semibold text-foreground">Included in every room</h2>
       <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {[
           'All utilities (electric, gas, water)',
           'Gigabit fiber WiFi',
           'Fully furnished',
-          'In-unit laundry access',
+          'On-site laundry access',
           'Weekly housekeeping of common areas',
           'Secure keyless entry',
           'Outdoor parking available',
           '24/7 maintenance support',
-          'Flexible lease terms',
+          'Shared kitchen and living spaces',
         ].map((item) => (
           <div class="flex items-center gap-2 text-sm text-muted-foreground">
             <svg class="h-4 w-4 text-accent shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>

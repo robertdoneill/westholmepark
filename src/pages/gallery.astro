@@ -2,22 +2,23 @@
 import Layout from '@/layouts/Layout.astro';
 import { ImageLightbox } from '@/components/islands/ImageLightbox';
 
+const imageBase = 'https://images.westholmepark.com';
 const images = [
-  { src: '/images/hero/hero-1.jpg', alt: 'Property exterior' },
-  { src: '/images/rooms/private/bedroom-1.jpg', alt: 'Private bedroom' },
-  { src: '/images/rooms/private/bedroom-2.jpg', alt: 'Private bedroom — alternate view' },
-  { src: '/images/rooms/private/master-1.jpg', alt: 'Master suite' },
-  { src: '/images/rooms/shared/bedroom-1.jpg', alt: 'Shared bedroom' },
-  { src: '/images/rooms/shared/bedroom-2.jpg', alt: 'Shared bedroom — alternate view' },
-  { src: '/images/common/living.jpg', alt: 'Living room' },
-  { src: '/images/common/kitchen.jpg', alt: 'Kitchen' },
-  { src: '/images/common/dining.jpg', alt: 'Dining area' },
-  { src: '/images/common/bathroom.jpg', alt: 'Bathroom' },
-  { src: '/images/common/outdoor.jpg', alt: 'Outdoor patio' },
-  { src: '/images/amenities/gym.jpg', alt: 'Fitness area' },
-  { src: '/images/amenities/study.jpg', alt: 'Study room' },
-  { src: '/images/amenities/laundry.jpg', alt: 'Laundry room' },
-  { src: '/images/common/garden.jpg', alt: 'Garden' },
+  { src: `${imageBase}/courtyard-arches-seating.jpg`, alt: 'Courtyard arches and outdoor seating' },
+  { src: `${imageBase}/courtyard-cafe-tables.jpg`, alt: 'Courtyard cafe tables' },
+  { src: `${imageBase}/living-room-lounge.jpg`, alt: 'Living room lounge' },
+  { src: `${imageBase}/pink-study-nook.jpg`, alt: 'Pink study nook' },
+  { src: `${imageBase}/dining-room-study-tables.jpg`, alt: 'Dining and study tables' },
+  { src: `${imageBase}/entry-lobby-staircase.jpg`, alt: 'Entry lobby and staircase' },
+  { src: `${imageBase}/stairwell-natural-light.jpg`, alt: 'Stairwell with natural light' },
+  { src: `${imageBase}/private-bedroom-twin-desk-wide.jpg`, alt: 'Private bedroom with twin bed and desk' },
+  { src: `${imageBase}/private-bedroom-bed-desk-window.jpg`, alt: 'Private bedroom with bed, desk, and window' },
+  { src: `${imageBase}/private-bedroom-desk-window.jpg`, alt: 'Private bedroom desk and window' },
+  { src: `${imageBase}/double-study-bedroom-desks.jpg`, alt: 'Shared bedroom with two desks' },
+  { src: `${imageBase}/shared-pod-bunk-room-wide.jpg`, alt: 'Shared pod room' },
+  { src: `${imageBase}/shared-pod-bunk-bed.jpg`, alt: 'Shared pod bunk bed' },
+  { src: `${imageBase}/shared-pod-room-wardrobes.jpg`, alt: 'Shared pod room wardrobes' },
+  { src: `${imageBase}/bathroom-shower-vanity.jpg`, alt: 'Bathroom with shower and vanity' },
 ];
 ---
 
@@ -25,7 +26,7 @@ const images = [
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
     <div class="max-w-2xl reveal">
       <h1 class="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">Gallery</h1>
-      <p class="mt-4 text-lg text-muted-foreground">Browse photos of our rooms, common spaces, and outdoor areas.</p>
+      <p class="mt-4 text-lg text-muted-foreground">Browse the courtyard, common rooms, study spaces, bedrooms, pod rooms, and bathroom areas.</p>
     </div>
 
     <div class="mt-14 reveal">
