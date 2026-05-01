@@ -12,6 +12,20 @@ import Layout from '@/layouts/Layout.astro';
       </p>
     </div>
 
+    <div class="mt-8 grid gap-4 sm:grid-cols-2 reveal">
+      {[
+        { label: 'Floor 1', title: 'Ground Floor', href: '/floor-plans/floor-1.html', meta: '4 bedrooms, common spaces, courtyard' },
+        { label: 'Floor 2', title: 'Second Floor', href: '/floor-plans/floor-2.html', meta: '19 bedrooms, hall baths, storage' },
+      ].map((floor) => (
+        <a href={floor.href} target="_blank" rel="noopener noreferrer" class="group border border-border bg-card p-5 transition-colors hover:bg-muted">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-primary">{floor.label}</p>
+          <h2 class="mt-2 text-xl font-semibold text-card-foreground">{floor.title}</h2>
+          <p class="mt-1 text-sm text-muted-foreground">{floor.meta}</p>
+          <p class="mt-4 text-sm font-semibold text-primary group-hover:underline">Open interactive plan</p>
+        </a>
+      ))}
+    </div>
+
     <div class="mt-10 overflow-hidden rounded-lg border border-border bg-muted reveal">
       <iframe
         src="/floor-plans/floor-1.html"
@@ -29,6 +43,14 @@ import Layout from '@/layouts/Layout.astro';
         class="inline-flex items-center justify-center rounded-lg border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
       >
         Open Floor 1 Fullscreen
+      </a>
+      <a
+        href="/floor-plans/floor-2.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center rounded-lg border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+      >
+        Open Floor 2 Fullscreen
       </a>
       <a
         href="/contact"
