@@ -2,43 +2,43 @@
 import Layout from '@/layouts/Layout.astro';
 ---
 
-<Layout title="Floor Plans — Westholme Park" description="Explore the interactive first-floor plan for Westholme Park student housing near UCLA.">
+<Layout title="Floor Plans — Westholme Park" description="Explore rendered floor plans for Westholme Park student housing near UCLA.">
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
     <div class="max-w-3xl reveal">
       <p class="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Floor Plans</p>
       <h1 class="mt-3 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">See how the house is laid out.</h1>
       <p class="mt-4 text-lg leading-8 text-muted-foreground">
-        Click rooms and common spaces on the interactive plan to understand layout, room size, nearby bathrooms, and shared areas.
+        Review each floor to understand room locations, nearby bathrooms, and the shared spaces that shape daily life in the house.
       </p>
     </div>
 
     <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 reveal">
       {[
-        { label: 'Floor 1', title: 'Ground Floor', href: '/floor-plans/floor-1.html', meta: '4 bedrooms, common spaces, courtyard' },
-        { label: 'Floor 2', title: 'Second Floor', href: '/floor-plans/floor-2.html', meta: '19 bedrooms, hall baths, storage' },
-        { label: 'Floor 3', title: 'Third Floor', href: '/floor-plans/floor-3.html', meta: '6 bedrooms, two flagship suites' },
+        { label: 'Floor 1', title: 'Ground Floor', href: '/floor-plans/floor-1.jpg', meta: '4 bedrooms, common spaces, courtyard' },
+        { label: 'Floor 2', title: 'Second Floor', href: '/floor-plans/floor-2.jpg', meta: '19 bedrooms, hall baths, storage' },
+        { label: 'Floor 3', title: 'Third Floor', href: '/floor-plans/floor-3.jpg', meta: '6 bedrooms, two flagship suites' },
       ].map((floor) => (
         <a href={floor.href} target="_blank" rel="noopener noreferrer" class="group border border-border bg-card p-5 transition-colors hover:bg-muted">
           <p class="text-xs font-semibold uppercase tracking-[0.18em] text-primary">{floor.label}</p>
           <h2 class="mt-2 text-xl font-semibold text-card-foreground">{floor.title}</h2>
           <p class="mt-1 text-sm text-muted-foreground">{floor.meta}</p>
-          <p class="mt-4 text-sm font-semibold text-primary group-hover:underline">Open interactive plan</p>
+          <p class="mt-4 text-sm font-semibold text-primary group-hover:underline">Open full plan</p>
         </a>
       ))}
     </div>
 
     <div class="mt-10 overflow-hidden rounded-lg border border-border bg-muted reveal">
-      <iframe
-        src="/floor-plans/floor-1.html"
-        title="Westholme Park first floor interactive floor plan"
-        class="h-[760px] w-full bg-background"
+      <img
+        src="/floor-plans/floor-1.jpg"
+        alt="Westholme Park Floor 1 plan"
+        class="w-full bg-background"
         loading="lazy"
-      ></iframe>
+      />
     </div>
 
     <div class="mt-6 flex flex-wrap gap-3 reveal">
       <a
-        href="/floor-plans/floor-1.html"
+        href="/floor-plans/floor-1.jpg"
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center justify-center rounded-lg border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
@@ -46,7 +46,7 @@ import Layout from '@/layouts/Layout.astro';
         Open Floor 1 Fullscreen
       </a>
       <a
-        href="/floor-plans/floor-2.html"
+        href="/floor-plans/floor-2.jpg"
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center justify-center rounded-lg border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
@@ -54,7 +54,7 @@ import Layout from '@/layouts/Layout.astro';
         Open Floor 2 Fullscreen
       </a>
       <a
-        href="/floor-plans/floor-3.html"
+        href="/floor-plans/floor-3.jpg"
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center justify-center rounded-lg border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
