@@ -5,7 +5,7 @@ import RoomCard from '@/components/astro/RoomCard.astro';
 const imageBase = 'https://images.westholmepark.com';
 ---
 
-<Layout title="Rooms & Pricing — Westholme Park" description="Private, shared, and pod-style rooms for female students near UCLA. Furnished, managed, and move-in ready.">
+<Layout title="Rooms & Pricing — Westholme Park" description="Private rooms, doubles, and dorm rooms for female students near UCLA. Furnished, managed, and move-in ready.">
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
     <div class="max-w-2xl reveal">
       <p class="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Rooms & Pricing</p>
@@ -15,25 +15,25 @@ const imageBase = 'https://images.westholmepark.com';
 
     <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <RoomCard
-        title="Private Bedroom"
-        price="From $1,800/mo"
+        title="Private Room"
+        price="From $1,545/mo"
         description="A furnished private room with study space, storage, and natural light for students who want a quieter home base."
         features={['Twin XL bed', 'Desk and chair', 'Closet storage', 'Shared bathroom', 'Common room access']}
         image={`${imageBase}/private-bedroom-bed-desk-window.jpg`}
         badge="Best for privacy"
       />
       <RoomCard
-        title="Shared Bedroom"
-        price="From $1,200/mo"
-        description="A practical shared layout with desks and storage, ideal for students who want value and connection."
-        features={['Two desks', 'Individual storage', 'Shared layout', 'Shared bathroom', 'Common room access']}
+        title="Double Room"
+        price="From $1,095/mo"
+        description="A furnished two-person room with desks and storage, ideal for students who want value and connection."
+        features={['Two desks', 'Individual storage', 'Two-person room', 'Shared bathroom', 'Common room access']}
         image={`${imageBase}/double-study-bedroom-desks.jpg`}
         badge="Best value"
       />
       <RoomCard
-        title="Pod Room"
-        price="Ask for availability"
-        description="A distinctive shared setup with built-in bunks, privacy curtains, wardrobes, and study stations."
+        title="Dorm Room"
+        price="From $995/mo"
+        description="A social dorm-style room with built-in bunks, privacy curtains, wardrobes, and study stations."
         features={['Built-in bunks', 'Privacy curtains', 'Wardrobes', 'Study desks', 'Shared bathroom']}
         image={`${imageBase}/shared-pod-bunk-room-wide.jpg`}
         badge="Limited"
