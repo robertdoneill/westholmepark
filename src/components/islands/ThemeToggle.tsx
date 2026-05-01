@@ -1,9 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
 
-export function ThemeToggle() {
+interface Props {
+  variant?: 'default' | 'hero';
+}
+
+export function ThemeToggle({ variant = 'default' }: Props) {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [mounted, setMounted] = useState(false);
+  const buttonClass =
+    variant === 'hero'
+      ? 'inline-flex h-9 w-9 items-center justify-center border border-white/30 bg-black/25 text-white backdrop-blur transition-colors hover:bg-black/40'
+      : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground hover:bg-muted transition-colors';
 
   useEffect(() => {
     setMounted(true);
@@ -22,7 +30,7 @@ export function ThemeToggle() {
     return (
       <button
         aria-label="Toggle theme"
-        className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground hover:bg-muted"
+        className={buttonClass}
       >
         <span className="h-4 w-4" />
       </button>
@@ -33,7 +41,7 @@ export function ThemeToggle() {
     <button
       onClick={toggle}
       aria-label="Toggle theme"
-      className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground hover:bg-muted transition-colors"
+      className={buttonClass}
     >
       {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
     </button>

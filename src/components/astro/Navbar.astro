@@ -40,11 +40,11 @@ const isHome = currentPath === '/';
     <div class="flex items-center gap-2">
       <a
         href="/contact"
-        class={`hidden px-4 py-2 text-sm font-semibold transition-opacity hover:opacity-90 md:inline-flex ${isHome ? 'bg-white text-foreground' : 'bg-primary text-primary-foreground'}`}
+        class={`hidden px-4 py-2 text-sm font-semibold transition-opacity hover:opacity-90 md:inline-flex ${isHome ? 'bg-white text-zinc-950 shadow-lg shadow-black/15' : 'bg-primary text-primary-foreground'}`}
       >
         Check Availability
       </a>
-      <ThemeToggle client:load />
+      <ThemeToggle client:load variant={isHome ? 'hero' : 'default'} />
       <MobileNav client:load links={navLinks} currentPath={currentPath} />
     </div>
   </div>
