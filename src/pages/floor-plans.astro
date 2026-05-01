@@ -14,9 +14,9 @@ import Layout from '@/layouts/Layout.astro';
 
     <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 reveal">
       {[
-        { label: 'Floor 1', title: 'Ground Floor', href: '/floor-plans/floor-1.jpg', meta: '4 bedrooms, common spaces, courtyard' },
-        { label: 'Floor 2', title: 'Second Floor', href: '/floor-plans/floor-2.jpg', meta: '19 bedrooms, hall baths, storage' },
-        { label: 'Floor 3', title: 'Third Floor', href: '/floor-plans/floor-3.jpg', meta: '6 bedrooms, two flagship suites' },
+        { label: 'Floor 1', title: 'Ground Floor', href: '/floor-plans/floor-1.png', meta: '4 bedrooms, common spaces, courtyard' },
+        { label: 'Floor 2', title: 'Second Floor', href: '/floor-plans/floor-2.png', meta: '19 bedrooms, hall baths, storage' },
+        { label: 'Floor 3', title: 'Third Floor', href: '/floor-plans/floor-3.png', meta: '6 bedrooms, two flagship suites' },
       ].map((floor) => (
         <a href={floor.href} target="_blank" rel="noopener noreferrer" class="group border border-border bg-card p-5 transition-colors hover:bg-muted">
           <p class="text-xs font-semibold uppercase tracking-[0.18em] text-primary">{floor.label}</p>
@@ -29,7 +29,7 @@ import Layout from '@/layouts/Layout.astro';
 
     <div class="mt-10 overflow-hidden rounded-lg border border-border bg-muted reveal">
       <img
-        src="/floor-plans/floor-1.jpg"
+        src="/floor-plans/floor-1.png"
         alt="Westholme Park Floor 1 plan"
         class="w-full bg-background"
         loading="lazy"
@@ -38,7 +38,7 @@ import Layout from '@/layouts/Layout.astro';
 
     <div class="mt-6 flex flex-wrap gap-3 reveal">
       <a
-        href="/floor-plans/floor-1.jpg"
+        href="/floor-plans/floor-1.png"
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center justify-center rounded-lg border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
@@ -46,7 +46,7 @@ import Layout from '@/layouts/Layout.astro';
         Open Floor 1 Fullscreen
       </a>
       <a
-        href="/floor-plans/floor-2.jpg"
+        href="/floor-plans/floor-2.png"
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center justify-center rounded-lg border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
@@ -54,7 +54,7 @@ import Layout from '@/layouts/Layout.astro';
         Open Floor 2 Fullscreen
       </a>
       <a
-        href="/floor-plans/floor-3.jpg"
+        href="/floor-plans/floor-3.png"
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center justify-center rounded-lg border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
