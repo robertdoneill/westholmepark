@@ -47,11 +47,26 @@ const imageBase = 'https://images.westholmepark.com';
         ))}
       </div>
     </div>
-    <div class="grid grid-cols-5 gap-3 reveal">
-      <img src={`${imageBase}/living-room-lounge.jpg`} alt="Westholme Park living room lounge" class="col-span-3 h-full min-h-80 w-full object-cover" loading="lazy" />
-      <div class="col-span-2 grid gap-3">
-        <img src={`${imageBase}/pink-study-nook.jpg`} alt="Pink study nook" class="h-40 w-full object-cover" loading="lazy" />
-        <img src={`${imageBase}/stairwell-natural-light.jpg`} alt="Stairwell with natural light" class="h-40 w-full object-cover" loading="lazy" />
+    <div class="grid gap-3 reveal">
+      <img
+        src={`${imageBase}/dining-room-study-tables.jpg`}
+        alt="Westholme Park dining and study room"
+        class="aspect-[16/10] w-full object-cover"
+        loading="lazy"
+      />
+      <div class="grid gap-3 sm:grid-cols-2">
+        <img
+          src={`${imageBase}/private-bedroom-twin-desk-wide.jpg`}
+          alt="Private bedroom with twin bed and desk"
+          class="aspect-[4/3] w-full object-cover"
+          loading="lazy"
+        />
+        <img
+          src={`${imageBase}/courtyard-cafe-tables.jpg`}
+          alt="Courtyard cafe tables"
+          class="aspect-[4/3] w-full object-cover"
+          loading="lazy"
+        />
       </div>
     </div>
   </section>
