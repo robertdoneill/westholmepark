@@ -12,10 +12,11 @@ import Layout from '@/layouts/Layout.astro';
       </p>
     </div>
 
-    <div class="mt-8 grid gap-4 sm:grid-cols-2 reveal">
+    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 reveal">
       {[
         { label: 'Floor 1', title: 'Ground Floor', href: '/floor-plans/floor-1.html', meta: '4 bedrooms, common spaces, courtyard' },
         { label: 'Floor 2', title: 'Second Floor', href: '/floor-plans/floor-2.html', meta: '19 bedrooms, hall baths, storage' },
+        { label: 'Floor 3', title: 'Third Floor', href: '/floor-plans/floor-3.html', meta: '6 bedrooms, two flagship suites' },
       ].map((floor) => (
         <a href={floor.href} target="_blank" rel="noopener noreferrer" class="group border border-border bg-card p-5 transition-colors hover:bg-muted">
           <p class="text-xs font-semibold uppercase tracking-[0.18em] text-primary">{floor.label}</p>
@@ -51,6 +52,14 @@ import Layout from '@/layouts/Layout.astro';
         class="inline-flex items-center justify-center rounded-lg border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
       >
         Open Floor 2 Fullscreen
+      </a>
+      <a
+        href="/floor-plans/floor-3.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center rounded-lg border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+      >
+        Open Floor 3 Fullscreen
       </a>
       <a
         href="/contact"
