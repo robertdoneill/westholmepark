@@ -1,0 +1,47 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-border bg-muted/30">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="grid gap-8 md:grid-cols-3">
+      <div>
+        <a href="/" class="flex items-center gap-2 text-lg font-bold tracking-tight text-foreground">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Westholme Park</span>
+        </a>
+        <p class="mt-3 text-sm text-muted-foreground max-w-xs">
+          Premium, fully-furnished housing for female students. Steps from UCLA.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold text-foreground">Quick Links</h3>
+        <ul class="mt-3 space-y-2">
+          <li><a href="/rooms" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Rooms & Pricing</a></li>
+          <li><a href="/gallery" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Photo Gallery</a></li>
+          <li><a href="/about" class="text-sm text-muted-foreground hover:text-foreground transition-colors">About</a></li>
+          <li><a href="/faq" class="text-sm text-muted-foreground hover:text-foreground transition-colors">FAQ</a></li>
+          <li><a href="/contact" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold text-foreground">Contact</h3>
+        <ul class="mt-3 space-y-2">
+          <li><a href="mailto:join@westholmepark.com" class="text-sm text-muted-foreground hover:text-foreground transition-colors">join@westholmepark.com</a></li>
+          <li><span class="text-sm text-muted-foreground">Los Angeles, CA 90024</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-10 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 sm:flex-row">
+      <p class="text-xs text-muted-foreground">
+        &copy; {currentYear} Westholme Park. All rights reserved.
+      </p>
+      <p class="text-xs text-muted-foreground">
+        Designed by <a href="https://afinity.house" class="underline underline-offset-2 hover:text-foreground">Affinity House</a>
+      </p>
+    </div>
+  </div>
+</footer>

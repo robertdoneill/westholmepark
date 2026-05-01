@@ -1,0 +1,42 @@
+---
+const amenities = [
+  { icon: 'wifi', title: 'High-Speed WiFi', desc: 'Gigabit fiber throughout the property' },
+  { icon: 'utensils', title: 'Modern Kitchen', desc: 'Fully equipped with appliances & cookware' },
+  { icon: 'sofa', title: 'Furnished Common Areas', desc: 'Living room, dining, and study spaces' },
+  { icon: 'washing-machine', title: 'In-Unit Laundry', desc: 'Washers & dryers on every floor' },
+  { icon: 'shield-check', title: 'Secure Building', desc: 'Keyless entry & security cameras' },
+  { icon: 'dumbbell', title: 'Fitness Area', desc: 'On-site gym & yoga space' },
+  { icon: 'car', title: 'Parking Available', desc: 'Off-street parking for residents' },
+  { icon: 'leaf', title: 'Outdoor Space', desc: 'Garden patio & outdoor seating' },
+];
+
+const iconMap: Record<string, string> = {
+  wifi: '<path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/>',
+  utensils: '<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>',
+  sofa: '<path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 11v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H6v-2a2 2 0 0 0-4 0Z"/><path d="M4 18v2"/><path d="M20 18v2"/>',
+  'washing-machine': '<rect width="18" height="20" x="3" y="2" rx="2"/><circle cx="12" cy="13" r="5"/><path d="M12 18a2.5 2.5 0 0 0 0-5"/>',
+  'shield-check': '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>',
+  dumbbell: '<path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 4-4"/><path d="m2 6 4-4"/><path d="m3 10 7-7"/><path d="m14 21 7-7"/>',
+  car: '<path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>',
+  leaf: '<path d="M11 20A7 7 0 0 1 9.8 6.6C10.5 4.8 12.8 3 16 3c4 0 6.5 2 8 5a7 7 0 0 1-3 10"/><path d="M11 20v2"/><path d="M7 20c0-2 1.5-4 4-4s4 2 4 4"/>',
+};
+---
+
+<section class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+  <div class="text-center max-w-2xl mx-auto reveal">
+    <h2 class="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Everything you need</h2>
+    <p class="mt-4 text-lg text-muted-foreground">All utilities and amenities included. Just bring your suitcase.</p>
+  </div>
+
+  <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    {amenities.map((a) => (
+      <div class="group rounded-xl border border-border bg-card p-6 transition-all hover:shadow-md hover:-translate-y-1 reveal">
+        <div class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={iconMap[a.icon]} />
+        </div>
+        <h3 class="mt-4 text-sm font-semibold text-card-foreground">{a.title}</h3>
+        <p class="mt-1 text-sm text-muted-foreground">{a.desc}</p>
+      </div>
+    ))}
+  </div>
+</section>

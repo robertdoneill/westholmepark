@@ -1,0 +1,67 @@
+---
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout title="About — Westholme Park" description="Learn about Westholme Park, our mission, and house rules.">
+  <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="max-w-3xl reveal">
+      <h1 class="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">About Westholme Park</h1>
+      <p class="mt-4 text-lg text-muted-foreground">
+        Westholme Park is a premium shared housing community designed specifically for female students attending UCLA, UCLA Extension, and Santa Monica College.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-8 lg:grid-cols-2">
+      <div class="reveal">
+        <h2 class="text-2xl font-semibold text-foreground">Our Mission</h2>
+        <p class="mt-4 text-muted-foreground leading-relaxed">
+          We believe every student deserves a safe, beautiful, and supportive place to call home while pursuing their education. Our property combines hotel-quality finishes with the warmth of a shared community — giving you privacy when you need it and connection when you want it.
+        </p>
+        <p class="mt-4 text-muted-foreground leading-relaxed">
+          Founded by Affinity House, Westholme Park is managed with care and attention to detail. From the moment you tour to the day you move out, our team is here to make your living experience seamless.
+        </p>
+      </div>
+      <div class="reveal">
+        <div class="aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-muted">
+          <img
+            src="/images/common/living.jpg"
+            alt="Common area"
+            class="h-full w-full object-cover"
+            onerror="this.parentElement.classList.add('flex','items-center','justify-center');this.outerHTML='<span class=text-muted-foreground>Photo coming soon</span>'"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-16 reveal">
+      <h2 class="text-2xl font-semibold text-foreground">House Rules</h2>
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        {[
+          { title: 'Quiet Hours', desc: '10:00 PM – 8:00 AM on weeknights. Respect your neighbors.' },
+          { title: 'No Smoking', desc: 'Smoking and vaping are prohibited anywhere on the property.' },
+          { title: 'Guests', desc: 'Overnight guests require prior approval. Max 2 nights per week.' },
+          { title: 'Shared Spaces', desc: 'Clean up after yourself in kitchens, bathrooms, and common areas.' },
+          { title: 'Rent & Payments', desc: 'Rent is due on the 1st of each month. Late fees apply after the 5th.' },
+          { title: 'Move-Out Notice', desc: '30 days written notice required unless otherwise specified in your lease.' },
+        ].map((rule) => (
+          <div class="rounded-xl border border-border bg-card p-5">
+            <h3 class="font-semibold text-card-foreground">{rule.title}</h3>
+            <p class="mt-1 text-sm text-muted-foreground">{rule.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="mt-16 reveal">
+      <h2 class="text-2xl font-semibold text-foreground">Location</h2>
+      <p class="mt-4 text-muted-foreground leading-relaxed">
+        We're located directly across from the UCLA campus in Westwood, Los Angeles. Walk to class in minutes, or hop on the Big Blue Bus for easy access to Santa Monica and the rest of LA.
+      </p>
+      <div class="mt-6 rounded-xl border border-border bg-muted p-6 text-center">
+        <p class="text-sm text-muted-foreground">Address</p>
+        <p class="mt-1 text-lg font-medium text-foreground">Los Angeles, CA 90024</p>
+        <p class="mt-1 text-sm text-muted-foreground">Near UCLA campus — exact address provided upon application.</p>
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 20 14% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14% 10%;
+    --primary: 18 35% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 30 20% 95%;
+    --secondary-foreground: 20 14% 10%;
+    --muted: 30 10% 94%;
+    --muted-foreground: 20 6% 45%;
+    --accent: 150 20% 35%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 20 10% 88%;
+    --input: 20 10% 88%;
+    --ring: 18 35% 48%;
+    --radius: 0.625rem;
+  }
+
+  .dark {
+    --background: 20 14% 8%;
+    --foreground: 30 10% 96%;
+    --card: 20 12% 10%;
+    --card-foreground: 30 10% 96%;
+    --popover: 20 12% 10%;
+    --popover-foreground: 30 10% 96%;
+    --primary: 18 40% 55%;
+    --primary-foreground: 20 14% 8%;
+    --secondary: 20 10% 15%;
+    --secondary-foreground: 30 10% 96%;
+    --muted: 20 10% 15%;
+    --muted-foreground: 20 6% 60%;
+    --accent: 150 20% 40%;
+    --accent-foreground: 20 14% 8%;
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 20 10% 18%;
+    --input: 20 10% 18%;
+    --ring: 18 40% 55%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Scroll-triggered fade-in */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

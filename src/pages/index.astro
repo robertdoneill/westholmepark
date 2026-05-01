@@ -1,0 +1,49 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeroSection from '@/components/astro/HeroSection.astro';
+import RoomCard from '@/components/astro/RoomCard.astro';
+import AmenityGrid from '@/components/astro/AmenityGrid.astro';
+import GalleryTeaser from '@/components/astro/GalleryTeaser.astro';
+import ContactCTA from '@/components/astro/ContactCTA.astro';
+---
+
+<Layout>
+  <HeroSection />
+
+  <section class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto reveal">
+      <h2 class="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Room options</h2>
+      <p class="mt-4 text-lg text-muted-foreground">Private or shared, every room is move-in ready with premium furnishings.</p>
+    </div>
+
+    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <RoomCard
+        title="Private Bedroom"
+        price="From $1,800/mo"
+        description="Your own fully furnished room with a twin XL bed, desk, closet, and natural light. Perfect for students who value privacy."
+        features={['Twin XL bed with mattress', 'Desk & ergonomic chair', 'Spacious closet', 'Large windows']}
+        image="/images/rooms/private/bedroom-1.jpg"
+        badge="Most Popular"
+      />
+      <RoomCard
+        title="Shared Bedroom"
+        price="From $1,200/mo"
+        description="Share a beautifully designed room with one roommate. Two beds, two desks, and plenty of storage in a spacious layout."
+        features={['Two twin XL beds', 'Two desks & chairs', 'Individual closets', 'Roommate matching']}
+        image="/images/rooms/shared/bedroom-1.jpg"
+      />
+      <RoomCard
+        title="Master Suite"
+        price="From $2,400/mo"
+        description="Our largest private room with an en-suite bathroom, king bed option, and premium finishes throughout."
+        features={['King or queen bed', 'Private bathroom', 'Walk-in closet', 'Premium finishes']}
+        image="/images/rooms/private/master-1.jpg"
+        badge="Premium"
+      />
+    </div>
+  </section>
+
+  <AmenityGrid />
+  <GalleryTeaser />
+  <ContactCTA />
+</Layout>
