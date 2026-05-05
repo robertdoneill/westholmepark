@@ -1,5 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import { SvgFloorPlanViewer } from '@/components/islands/SvgFloorPlanViewer';
 ---
 
 <Layout title="Floor Plans — Westholme Park" description="Explore rendered floor plans for Westholme Park student housing near UCLA.">
@@ -12,61 +13,6 @@ import Layout from '@/layouts/Layout.astro';
       </p>
     </div>
 
-    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 reveal">
-      {[
-        { label: 'Floor 1', title: 'Ground Floor', href: '/floor-plans/floor-1.png', meta: '4 bedrooms, common spaces, courtyard' },
-        { label: 'Floor 2', title: 'Second Floor', href: '/floor-plans/floor-2.png', meta: '19 bedrooms, hall baths, storage' },
-        { label: 'Floor 3', title: 'Third Floor', href: '/floor-plans/floor-3.png', meta: '6 bedrooms, two flagship suites' },
-      ].map((floor) => (
-        <a href={floor.href} target="_blank" rel="noopener noreferrer" class="group border border-border bg-card p-5 transition-colors hover:bg-muted">
-          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-primary">{floor.label}</p>
-          <h2 class="mt-2 text-xl font-semibold text-card-foreground">{floor.title}</h2>
-          <p class="mt-1 text-sm text-muted-foreground">{floor.meta}</p>
-          <p class="mt-4 text-sm font-semibold text-primary group-hover:underline">Open full plan</p>
-        </a>
-      ))}
-    </div>
-
-    <div class="mt-10 overflow-hidden rounded-lg border border-border bg-muted reveal">
-      <img
-        src="/floor-plans/floor-1.png"
-        alt="Westholme Park Floor 1 plan"
-        class="w-full bg-background"
-        loading="lazy"
-      />
-    </div>
-
-    <div class="mt-6 flex flex-wrap gap-3 reveal">
-      <a
-        href="/floor-plans/floor-1.png"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center justify-center rounded-lg border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
-      >
-        Open Floor 1 Fullscreen
-      </a>
-      <a
-        href="/floor-plans/floor-2.png"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center justify-center rounded-lg border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
-      >
-        Open Floor 2 Fullscreen
-      </a>
-      <a
-        href="/floor-plans/floor-3.png"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center justify-center rounded-lg border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
-      >
-        Open Floor 3 Fullscreen
-      </a>
-      <a
-        href="/contact"
-        class="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
-      >
-        Ask About Availability
-      </a>
-    </div>
+    <SvgFloorPlanViewer client:load />
   </div>
 </Layout>
