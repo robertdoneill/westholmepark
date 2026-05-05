@@ -73,7 +73,7 @@ const floor3Rooms: Room[] = [
     name: 'Room 340',
     sqft: 440.8,
     type: 'Double',
-    bbox: { x: 984, y: 424, w: 14, h: 13 },
+    bbox: { x: 985, y: 410, w: 10, h: 10 },
   },
   {
     id: 'room-350',
@@ -81,7 +81,7 @@ const floor3Rooms: Room[] = [
     name: 'Room 350',
     sqft: 461.8,
     type: 'Double',
-    bbox: { x: 998, y: 424, w: 14, h: 13 },
+    bbox: { x: 995, y: 410, w: 10, h: 10 },
   },
   {
     id: 'room-330',
@@ -89,7 +89,7 @@ const floor3Rooms: Room[] = [
     name: 'Room 330',
     sqft: 169.8,
     type: 'Private',
-    bbox: { x: 984, y: 437, w: 11, h: 9 },
+    bbox: { x: 985, y: 420, w: 10, h: 5 },
   },
   {
     id: 'room-320',
@@ -97,7 +97,7 @@ const floor3Rooms: Room[] = [
     name: 'Room 320',
     sqft: 149.7,
     type: 'Private',
-    bbox: { x: 984, y: 446, w: 9, h: 9 },
+    bbox: { x: 985, y: 425, w: 8, h: 7 },
   },
   {
     id: 'room-310',
@@ -105,7 +105,7 @@ const floor3Rooms: Room[] = [
     name: 'Room 310',
     sqft: 152.2,
     type: 'Private',
-    bbox: { x: 993, y: 446, w: 9, h: 9 },
+    bbox: { x: 993, y: 425, w: 8, h: 7 },
   },
   {
     id: 'room-300',
@@ -113,30 +113,85 @@ const floor3Rooms: Room[] = [
     name: 'Room 300',
     sqft: 152.0,
     type: 'Private',
-    bbox: { x: 1002, y: 446, w: 10, h: 9 },
+    bbox: { x: 1001, y: 425, w: 9, h: 7 },
   },
   {
     id: 'bath',
     number: '',
     name: 'Shared Bath',
     sqft: 0,
-    bbox: { x: 995, y: 432, w: 10, h: 8 },
+    bbox: { x: 995, y: 420, w: 8, h: 5 },
   },
   {
     id: 'stairs',
     number: '',
     name: 'Stairs',
     sqft: 0,
-    bbox: { x: 995, y: 424, w: 8, h: 8 },
+    bbox: { x: 995, y: 415, w: 8, h: 5 },
   },
   {
     id: 'fire-escape',
     number: '',
     name: 'Fire Escape',
     sqft: 0,
-    bbox: { x: 1006, y: 432, w: 6, h: 14 },
+    bbox: { x: 1003, y: 420, w: 7, h: 12 },
   },
 ];
+
+function useMeasuredOverlay(
+  containerRef: React.RefObject<HTMLDivElement | null>,
+  isActive: boolean
+) {
+  const [overlay, setOverlay] = useState({ left: 0, top: 0, width: 0, height: 0 });
+
+  const measure = useCallback(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const img = container.querySelector('img');
+    if (!img) return;
+    const imgRect = img.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+    setOverlay({
+      left: imgRect.left - containerRect.left,
+      top: imgRect.top - containerRect.top,
+      width: imgRect.width,
+      height: imgRect.height,
+    });
+  }, [containerRef]);
+
+  useEffect(() => {
+    if (!isActive) return;
+    measure();
+    const ro = new ResizeObserver(measure);
+    if (containerRef.current) {
+      ro.observe(containerRef.current);
+      const img = containerRef.current.querySelector('img');
+      if (img) {
+        ro.observe(img);
+        if ((img as HTMLImageElement).complete) measure();
+        else img.addEventListener('load', measure);
+      }
+    }
+    window.addEventListener('resize', measure);
+    const timer = setTimeout(measure, 500);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', measure);
+      clearTimeout(timer);
+    };
+  }, [isActive, measure, containerRef]);
+
+  return overlay;
+}
+
+function bboxToPercent(bbox: Room['bbox']) {
+  return {
+    left: ((bbox.x - floor3ViewBox.x) / floor3ViewBox.w) * 100,
+    top: ((bbox.y - floor3ViewBox.y) / floor3ViewBox.h) * 100,
+    width: (bbox.w / floor3ViewBox.w) * 100,
+    height: (bbox.h / floor3ViewBox.h) * 100,
+  };
+}
 
 export function SvgFloorPlanViewer() {
   const [planId, setPlanId] = useState('floor-3');
@@ -157,6 +212,8 @@ export function SvgFloorPlanViewer() {
     () => rooms.find((r) => r.id === activeRoomId) ?? null,
     [rooms, activeRoomId]
   );
+
+  const overlay = useMeasuredOverlay(containerRef, isFloor3);
 
   const choosePlan = (id: string) => {
     setPlanId(id);
@@ -206,8 +263,6 @@ export function SvgFloorPlanViewer() {
   }, [planId, zoom]);
 
   const residentialRooms = rooms.filter((r) => r.number && r.sqft > 0);
-
-  const vb = floor3ViewBox;
 
   return (
     <section className="mt-10 border border-border bg-card reveal">
@@ -317,47 +372,48 @@ export function SvgFloorPlanViewer() {
                   className="absolute inset-0 h-full w-full select-none object-contain"
                   draggable={false}
                 />
-                {isFloor3 && (
-                  <svg
-                    className="absolute inset-0 z-10"
-                    viewBox={`${vb.x} ${vb.y} ${vb.w} ${vb.h}`}
-                    preserveAspectRatio="xMidYMid meet"
+                {isFloor3 && overlay.width > 0 && (
+                  <div
+                    className="absolute z-10"
+                    style={{
+                      left: overlay.left,
+                      top: overlay.top,
+                      width: overlay.width,
+                      height: overlay.height,
+                    }}
                   >
-                    {rooms.map((room) => (
-                      <rect
-                        key={room.id}
-                        x={room.bbox.x}
-                        y={room.bbox.y}
-                        width={room.bbox.w}
-                        height={room.bbox.h}
-                        className="cursor-pointer transition-colors duration-200"
-                        fill={
-                          selectedRoomId === room.id
-                            ? 'hsl(var(--primary) / 0.25)'
-                            : hoveredRoomId === room.id
-                              ? 'hsl(var(--primary) / 0.15)'
-                              : 'transparent'
-                        }
-                        stroke={
-                          selectedRoomId === room.id || hoveredRoomId === room.id
-                            ? 'hsl(var(--primary))'
-                            : 'transparent'
-                        }
-                        strokeWidth="0.5"
-                        onMouseEnter={() => setHoveredRoomId(room.id)}
-                        onMouseLeave={() => setHoveredRoomId(null)}
-                        onMouseMove={(e) => {
-                          const rect = (e.target as SVGRectElement).ownerSVGElement?.getBoundingClientRect();
-                          if (rect) {
-                            setTooltipPos({ x: e.clientX, y: e.clientY });
+                    {rooms.map((room) => {
+                      const pct = bboxToPercent(room.bbox);
+                      return (
+                        <div
+                          key={room.id}
+                          className="absolute cursor-pointer transition-colors duration-200"
+                          style={{
+                            left: `${pct.left}%`,
+                            top: `${pct.top}%`,
+                            width: `${pct.width}%`,
+                            height: `${pct.height}%`,
+                            backgroundColor:
+                              selectedRoomId === room.id
+                                ? 'hsl(var(--primary) / 0.25)'
+                                : hoveredRoomId === room.id
+                                  ? 'hsl(var(--primary) / 0.15)'
+                                  : 'transparent',
+                            border:
+                              selectedRoomId === room.id || hoveredRoomId === room.id
+                                ? '1px solid hsl(var(--primary))'
+                                : '1px solid transparent',
+                          }}
+                          onMouseEnter={() => setHoveredRoomId(room.id)}
+                          onMouseLeave={() => setHoveredRoomId(null)}
+                          onMouseMove={(e) => setTooltipPos({ x: e.clientX, y: e.clientY })}
+                          onClick={() =>
+                            setSelectedRoomId((prev) => (prev === room.id ? null : room.id))
                           }
-                        }}
-                        onClick={() =>
-                          setSelectedRoomId((prev) => (prev === room.id ? null : room.id))
-                        }
-                      />
-                    ))}
-                  </svg>
+                        />
+                      );
+                    })}
+                  </div>
                 )}
               </div>
             </div>
