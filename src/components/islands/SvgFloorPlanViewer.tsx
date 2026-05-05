@@ -138,52 +138,6 @@ const floor3Rooms: Room[] = [
   },
 ];
 
-function useMeasuredOverlay(
-  containerRef: React.RefObject<HTMLDivElement | null>,
-  isActive: boolean
-) {
-  const [overlay, setOverlay] = useState({ left: 0, top: 0, width: 0, height: 0 });
-
-  const measure = useCallback(() => {
-    const container = containerRef.current;
-    if (!container) return;
-    const img = container.querySelector('img');
-    if (!img) return;
-    const imgRect = img.getBoundingClientRect();
-    const containerRect = container.getBoundingClientRect();
-    setOverlay({
-      left: imgRect.left - containerRect.left,
-      top: imgRect.top - containerRect.top,
-      width: imgRect.width,
-      height: imgRect.height,
-    });
-  }, [containerRef]);
-
-  useEffect(() => {
-    if (!isActive) return;
-    measure();
-    const ro = new ResizeObserver(measure);
-    if (containerRef.current) {
-      ro.observe(containerRef.current);
-      const img = containerRef.current.querySelector('img');
-      if (img) {
-        ro.observe(img);
-        if ((img as HTMLImageElement).complete) measure();
-        else img.addEventListener('load', measure);
-      }
-    }
-    window.addEventListener('resize', measure);
-    const timer = setTimeout(measure, 500);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener('resize', measure);
-      clearTimeout(timer);
-    };
-  }, [isActive, measure, containerRef]);
-
-  return overlay;
-}
-
 function bboxToPercent(bbox: Room['bbox']) {
   return {
     left: ((bbox.x - floor3ViewBox.x) / floor3ViewBox.w) * 100,
@@ -212,8 +166,6 @@ export function SvgFloorPlanViewer() {
     () => rooms.find((r) => r.id === activeRoomId) ?? null,
     [rooms, activeRoomId]
   );
-
-  const overlay = useMeasuredOverlay(containerRef, isFloor3);
 
   const choosePlan = (id: string) => {
     setPlanId(id);
@@ -372,16 +324,9 @@ export function SvgFloorPlanViewer() {
                   className="absolute inset-0 h-full w-full select-none object-contain"
                   draggable={false}
                 />
-                {isFloor3 && overlay.width > 0 && (
-                  <div
-                    className="absolute z-10"
-                    style={{
-                      left: overlay.left,
-                      top: overlay.top,
-                      width: overlay.width,
-                      height: overlay.height,
-                    }}
-                  >
+                {isFloor3 && (
+                  <div className="absolute inset-0 z-10">
+                  
                     {rooms.map((room) => {
                       const pct = bboxToPercent(room.bbox);
                       return (
