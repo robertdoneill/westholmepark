@@ -18,7 +18,6 @@ type Room = {
   name: string;
   sqft: number;
   type?: string;
-  // bounding box in original SVG coordinates
   bbox: { x: number; y: number; w: number; h: number };
 };
 
@@ -65,12 +64,9 @@ const plans: FloorPlan[] = [
   },
 ];
 
-// Original SVG viewBox before our adjustment: 958 414 58 25
-// We adjusted to 970 392 48 45 to show full Floor 3
 const floor3ViewBox = { x: 970, y: 408, w: 48, h: 30 };
 
 const floor3Rooms: Room[] = [
-  // Top row - larger rooms
   {
     id: 'room-340',
     number: '340',
@@ -87,7 +83,6 @@ const floor3Rooms: Room[] = [
     type: 'Double',
     bbox: { x: 998, y: 424, w: 14, h: 13 },
   },
-  // Middle section
   {
     id: 'room-330',
     number: '330',
@@ -120,7 +115,6 @@ const floor3Rooms: Room[] = [
     type: 'Private',
     bbox: { x: 1002, y: 446, w: 10, h: 9 },
   },
-  // Common areas
   {
     id: 'bath',
     number: '',
@@ -143,15 +137,6 @@ const floor3Rooms: Room[] = [
     bbox: { x: 1006, y: 432, w: 6, h: 14 },
   },
 ];
-
-function bboxToPercent(bbox: Room['bbox']) {
-  return {
-    left: ((bbox.x - floor3ViewBox.x) / floor3ViewBox.w) * 100,
-    top: ((bbox.y - floor3ViewBox.y) / floor3ViewBox.h) * 100,
-    width: (bbox.w / floor3ViewBox.w) * 100,
-    height: (bbox.h / floor3ViewBox.h) * 100,
-  };
-}
 
 export function SvgFloorPlanViewer() {
   const [planId, setPlanId] = useState('floor-3');
@@ -193,7 +178,6 @@ export function SvgFloorPlanViewer() {
     setSelectedRoomId(null);
   };
 
-  // Keyboard shortcuts
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLElement && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
@@ -222,6 +206,8 @@ export function SvgFloorPlanViewer() {
   }, [planId, zoom]);
 
   const residentialRooms = rooms.filter((r) => r.number && r.sqft > 0);
+
+  const vb = floor3ViewBox;
 
   return (
     <section className="mt-10 border border-border bg-card reveal">
@@ -332,44 +318,50 @@ export function SvgFloorPlanViewer() {
                   draggable={false}
                 />
                 {isFloor3 && (
-                  <div className="absolute inset-0 z-10">
-                    {rooms.map((room) => {
-                      const pct = bboxToPercent(room.bbox);
-                      return (
-                        <div
-                          key={room.id}
-                          className="absolute cursor-pointer transition-colors duration-200"
-                          style={{
-                            left: `${pct.left}%`,
-                            top: `${pct.top}%`,
-                            width: `${pct.width}%`,
-                            height: `${pct.height}%`,
-                            backgroundColor:
-                              selectedRoomId === room.id
-                                ? 'hsl(var(--primary) / 0.25)'
-                                : hoveredRoomId === room.id
-                                  ? 'hsl(var(--primary) / 0.15)'
-                                  : 'transparent',
-                            border:
-                              selectedRoomId === room.id || hoveredRoomId === room.id
-                                ? '1px solid hsl(var(--primary))'
-                                : '1px solid transparent',
-                          }}
-                          onMouseEnter={() => setHoveredRoomId(room.id)}
-                          onMouseLeave={() => setHoveredRoomId(null)}
-                          onMouseMove={(e) => setTooltipPos({ x: e.clientX, y: e.clientY })}
-                          onClick={() =>
-                            setSelectedRoomId((prev) => (prev === room.id ? null : room.id))
+                  <svg
+                    className="absolute inset-0 z-10"
+                    viewBox={`${vb.x} ${vb.y} ${vb.w} ${vb.h}`}
+                    preserveAspectRatio="xMidYMid meet"
+                  >
+                    {rooms.map((room) => (
+                      <rect
+                        key={room.id}
+                        x={room.bbox.x}
+                        y={room.bbox.y}
+                        width={room.bbox.w}
+                        height={room.bbox.h}
+                        className="cursor-pointer transition-colors duration-200"
+                        fill={
+                          selectedRoomId === room.id
+                            ? 'hsl(var(--primary) / 0.25)'
+                            : hoveredRoomId === room.id
+                              ? 'hsl(var(--primary) / 0.15)'
+                              : 'transparent'
+                        }
+                        stroke={
+                          selectedRoomId === room.id || hoveredRoomId === room.id
+                            ? 'hsl(var(--primary))'
+                            : 'transparent'
+                        }
+                        strokeWidth="0.5"
+                        onMouseEnter={() => setHoveredRoomId(room.id)}
+                        onMouseLeave={() => setHoveredRoomId(null)}
+                        onMouseMove={(e) => {
+                          const rect = (e.target as SVGRectElement).ownerSVGElement?.getBoundingClientRect();
+                          if (rect) {
+                            setTooltipPos({ x: e.clientX, y: e.clientY });
                           }
-                        />
-                      );
-                    })}
-                  </div>
+                        }}
+                        onClick={() =>
+                          setSelectedRoomId((prev) => (prev === room.id ? null : room.id))
+                        }
+                      />
+                    ))}
+                  </svg>
                 )}
               </div>
             </div>
 
-            {/* Tooltip */}
             {activeRoom && hoveredRoomId && !selectedRoomId && (
               <div
                 className="pointer-events-none absolute z-20 rounded-md border border-border bg-card px-3 py-2 shadow-lg"
