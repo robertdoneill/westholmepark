@@ -1,0 +1,25 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const imageBase = 'https://images.westholmepark.com';
+---
+
+<Layout title="Video Tour — Westholme Park" description="Walk through Westholme Park with a casual video tour of the first floor, common areas, and rooms.">
+  <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="max-w-2xl reveal">
+      <h1 class="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">Tour the house</h1>
+      <p class="mt-4 text-lg text-muted-foreground">A casual walkthrough of the first floor — common areas, hallways, and rooms as they actually look day to day.</p>
+    </div>
+
+    <div class="mt-14 flex justify-center reveal">
+      <video
+        controls
+        playsinline
+        preload="metadata"
+        class="h-auto w-full max-w-sm rounded-lg shadow-lg sm:max-w-md"
+      >
+        <source src={`${imageBase}/hilgard-1st-floor-tour.mp4`} type="video/mp4" />
+      </video>
+    </div>
+  </div>
+</Layout>
