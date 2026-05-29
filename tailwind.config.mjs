@@ -57,7 +57,52 @@ export default {
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
+      // Themed to the site's CSS variables so prose adapts to light/dark
+      // automatically (no need for `dark:prose-invert`).
+      typography: {
+        DEFAULT: {
+          css: {
+            '--tw-prose-body': 'hsl(var(--foreground))',
+            '--tw-prose-headings': 'hsl(var(--foreground))',
+            '--tw-prose-lead': 'hsl(var(--muted-foreground))',
+            '--tw-prose-links': 'hsl(var(--primary))',
+            '--tw-prose-bold': 'hsl(var(--foreground))',
+            '--tw-prose-counters': 'hsl(var(--primary))',
+            '--tw-prose-bullets': 'hsl(var(--primary))',
+            '--tw-prose-hr': 'hsl(var(--border))',
+            '--tw-prose-quotes': 'hsl(var(--muted-foreground))',
+            '--tw-prose-quote-borders': 'hsl(var(--primary))',
+            '--tw-prose-captions': 'hsl(var(--muted-foreground))',
+            '--tw-prose-code': 'hsl(var(--foreground))',
+            '--tw-prose-pre-code': 'hsl(var(--foreground))',
+            '--tw-prose-pre-bg': 'hsl(var(--muted))',
+            '--tw-prose-th-borders': 'hsl(var(--border))',
+            '--tw-prose-td-borders': 'hsl(var(--border))',
+            maxWidth: 'none',
+            a: {
+              fontWeight: '600',
+              textDecoration: 'none',
+              borderBottom: '1px solid hsl(var(--primary) / 0.35)',
+              transition: 'border-color 0.15s ease',
+            },
+            'a:hover': {
+              borderBottomColor: 'hsl(var(--primary))',
+            },
+            'h2, h3': {
+              scrollMarginTop: '6rem',
+            },
+            blockquote: {
+              fontStyle: 'normal',
+              backgroundColor: 'hsl(var(--muted) / 0.5)',
+              borderRadius: '0 var(--radius) var(--radius) 0',
+              padding: '0.75rem 1.25rem',
+            },
+            'blockquote p:first-of-type::before': { content: 'none' },
+            'blockquote p:last-of-type::after': { content: 'none' },
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };
