@@ -1,0 +1,63 @@
+---
+// Live availability signal, fetched client-side from the hostel app's public
+// endpoint. Renders `fallback` immediately so it degrades gracefully if the
+// fetch fails or JS is disabled.
+interface Props {
+  property?: string;
+  fallback?: string;
+  class?: string;
+}
+
+const {
+  property = 'westholme-westwood',
+  fallback = 'Limited rooms for the upcoming school year',
+  class: className = '',
+} = Astro.props;
+---
+
+<span
+  data-availability-badge
+  data-property={property}
+  class={className}
+>
+  {fallback}
+</span>
+
+<script>
+  const ENDPOINT = 'https://stay.havencoliving.com/api/public/availability';
+
+  function label(status: string, roomsOpen: number): string | null {
+    switch (status) {
+      case 'open':
+        return 'Rooms available now';
+      case 'limited':
+        return roomsOpen > 0
+          ? `Limited availability — ${roomsOpen} room${roomsOpen === 1 ? '' : 's'} open`
+          : 'Limited availability';
+      case 'full':
+        return 'Currently full — join the waitlist';
+      default:
+        return null;
+    }
+  }
+
+  async function hydrate(el: HTMLElement) {
+    const property = el.dataset.property || 'westholme-westwood';
+    try {
+      const res = await fetch(`${ENDPOINT}?property=${encodeURIComponent(property)}`);
+      if (!res.ok) return; // keep fallback copy
+      const data = await res.json();
+      const text = label(data.status, data.roomsOpen);
+      if (text) {
+        el.textContent = text;
+        el.setAttribute('data-status', data.status);
+      }
+    } catch {
+      // Network/CORS failure — leave the fallback text in place.
+    }
+  }
+
+  document
+    .querySelectorAll<HTMLElement>('[data-availability-badge]')
+    .forEach(hydrate);
+</script>

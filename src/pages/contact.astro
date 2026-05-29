@@ -1,5 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import AvailabilityBadge from '@/components/astro/AvailabilityBadge.astro';
 
 const imageBase = 'https://images.westholmepark.com';
 ---
@@ -14,10 +15,17 @@ const imageBase = 'https://images.westholmepark.com';
     <div class="mt-14 grid gap-8 lg:grid-cols-2">
       <div class="space-y-6 reveal">
         <div class="rounded-lg border border-border bg-card p-6">
-          <h3 class="font-semibold text-card-foreground">Check Availability</h3>
+          <div class="flex items-center justify-between gap-3">
+            <h3 class="font-semibold text-card-foreground">Check Availability</h3>
+            <AvailabilityBadge
+              property="westholme-westwood"
+              fallback=""
+              class="text-xs font-semibold uppercase tracking-wide text-primary data-[status=full]:text-muted-foreground"
+            />
+          </div>
           <p class="mt-2 text-sm text-muted-foreground">Share your room preference and timing so we can help match you with an available option.</p>
           <a
-            href="https://tally.so/r/mV86WJ"
+            href="https://stay.havencoliving.com/apply"
             target="_blank"
             rel="noopener noreferrer"
             class="mt-4 inline-flex items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity"
