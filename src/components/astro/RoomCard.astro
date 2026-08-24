@@ -2,13 +2,14 @@
 interface Props {
   title: string;
   price: string;
+  priceNote?: string;
   description: string;
   features: string[];
   image: string;
   badge?: string;
 }
 
-const { title, price, description, features, image, badge } = Astro.props;
+const { title, price, priceNote, description, features, image, badge } = Astro.props;
 ---
 
 <div class="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
@@ -28,7 +29,12 @@ const { title, price, description, features, image, badge } = Astro.props;
   <div class="flex flex-1 flex-col p-6">
     <div class="flex items-baseline justify-between gap-3">
       <h3 class="text-lg font-semibold text-card-foreground">{title}</h3>
-      <span class="text-sm font-semibold text-primary whitespace-nowrap">{price}</span>
+      <div class="shrink-0 text-right">
+        <span class="text-sm font-semibold text-primary whitespace-nowrap">{price}</span>
+        {priceNote && (
+          <p class="mt-0.5 text-xs text-muted-foreground whitespace-nowrap">{priceNote}</p>
+        )}
+      </div>
     </div>
     <p class="mt-2 text-sm text-muted-foreground leading-relaxed">{description}</p>
     <ul class="mt-4 space-y-1.5">

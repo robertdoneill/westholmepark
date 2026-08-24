@@ -1,0 +1,56 @@
+---
+import { pricing, RATES_EFFECTIVE } from '@/data/pricing';
+
+const premium = pricing.double.academic - pricing.double.full;
+---
+
+<section class="border-y border-border bg-muted/30">
+  <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <div class="max-w-2xl reveal">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-primary">How the lease works</p>
+      <h2 class="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+        Priced against an apartment. Without the apartment.
+      </h2>
+      <p class="mt-5 text-lg leading-8 text-muted-foreground">
+        The rates above are twelve-month rates, the same basis a Westwood apartment quotes on. The
+        difference is what the number covers. An apartment arrives empty, with utilities, internet,
+        and renters insurance still to sort out and a deposit due before you have moved a single box.
+        Here one figure covers the room, the furniture, utilities, WiFi, laundry, and the shared
+        kitchen and study spaces.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 reveal">
+      <div class="border-2 border-primary bg-card p-7">
+        <p class="text-xs font-semibold uppercase tracking-[0.14em] text-primary">Full year · best rate</p>
+        <p class="mt-3 text-2xl font-bold tracking-tight text-card-foreground">Twelve months</p>
+        <p class="mt-4 text-sm leading-6 text-muted-foreground">
+          Your room stays yours through the summer, for research, an internship, or simply because
+          you would rather not move twice. This is the lowest monthly rate we offer and the one to
+          hold up against an apartment listing.
+        </p>
+      </div>
+
+      <div class="border border-border bg-card p-7">
+        <p class="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+          Academic year · add ${premium} a month
+        </p>
+        <p class="mt-3 text-2xl font-bold tracking-tight text-card-foreground">
+          Mid-September to mid-June
+        </p>
+        <p class="mt-4 text-sm leading-6 text-muted-foreground">
+          Only need the school year? Take the nine-month term, leave after spring finals, and owe
+          nothing over the summer — no rent on an empty room and no subletter to find in April.
+          Almost no apartment near campus will offer you that at any price.
+        </p>
+      </div>
+    </div>
+
+    <p class="mt-10 max-w-3xl text-xs leading-5 text-muted-foreground reveal">
+      For agreements beginning {RATES_EFFECTIVE}, covering winter and spring 2027 and carried unchanged into the 2027–28
+      academic year — there is no mid-year increase. Rates are per person, per month, and exclude
+      the refundable security deposit. Private rooms vary by tier; the rate shown is the starting
+      one. Availability changes by lease cycle.
+    </p>
+  </div>
+</section>

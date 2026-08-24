@@ -5,6 +5,8 @@ import RoomCard from '@/components/astro/RoomCard.astro';
 import AmenityGrid from '@/components/astro/AmenityGrid.astro';
 import GalleryTeaser from '@/components/astro/GalleryTeaser.astro';
 import ContactCTA from '@/components/astro/ContactCTA.astro';
+import TermsSection from '@/components/astro/TermsSection.astro';
+import { pricing, priceLabel, priceNote, RATES_EFFECTIVE } from '@/data/pricing';
 
 const imageBase = 'https://images.westholmepark.com';
 ---
@@ -75,13 +77,14 @@ const imageBase = 'https://images.westholmepark.com';
     <div class="text-center max-w-2xl mx-auto reveal">
       <p class="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Choose your fit</p>
       <h2 class="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Rooms that make move-in simple</h2>
-      <p class="mt-4 text-lg text-muted-foreground">Private rooms, doubles, and dorm rooms with furniture, storage, and practical study space already in place.</p>
+      <p class="mt-4 text-lg text-muted-foreground">Private rooms, doubles, and dorm rooms with furniture, storage, and practical study space already in place. Rates shown are twelve-month and all-inclusive, for agreements beginning {RATES_EFFECTIVE}.</p>
     </div>
 
     <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <RoomCard
         title="Private Room"
-        price="From $1,545/mo"
+        price={priceLabel(pricing.private)}
+        priceNote={priceNote(pricing.private)}
         description="A calm, furnished room for privacy, focus, and a daily routine that feels your own."
         features={['Twin XL bed', 'Desk and chair', 'Closet storage', 'Natural light']}
         image={`${imageBase}/private-bedroom-bed-desk-window.jpg`}
@@ -89,7 +92,8 @@ const imageBase = 'https://images.westholmepark.com';
       />
       <RoomCard
         title="Double Room"
-        price="From $1,095/mo"
+        price={priceLabel(pricing.double)}
+        priceNote={priceNote(pricing.double)}
         description="A furnished two-person room with desks, storage, and a more affordable way to live close to UCLA."
         features={['Two desks', 'Individual storage', 'Two-person room', 'Community feel']}
         image={`${imageBase}/double-study-bedroom-desks.jpg`}
@@ -97,7 +101,8 @@ const imageBase = 'https://images.westholmepark.com';
       />
       <RoomCard
         title="Dorm Room"
-        price="From $995/mo"
+        price={priceLabel(pricing.dorm)}
+        priceNote={priceNote(pricing.dorm)}
         description="A social dorm-style room with built-in bunks, privacy curtains, wardrobes, and study desks."
         features={['Built-in bunks', 'Privacy curtains', 'Wardrobes', 'Study desks']}
         image={`${imageBase}/shared-pod-bunk-room-wide.jpg`}
@@ -105,6 +110,8 @@ const imageBase = 'https://images.westholmepark.com';
       />
     </div>
   </section>
+
+  <TermsSection />
 
   <AmenityGrid />
 
