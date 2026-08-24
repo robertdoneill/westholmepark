@@ -4,19 +4,22 @@
  * These are the rate-card figures, effective for agreements beginning
  * 1 January 2027. The card is set once and used twice: spring 2027 re-lets
  * first, then carried unchanged into the 2027-28 academic year, with no
- * mid-year step. The 2026-27 rates it replaces were:
- *
- *   private   academic 1545 (from)   full 1495 (from)
- *   double    academic 1095          full 1045
+ * mid-year step. Source of truth: docs/westholme-rate-card.html in the hostel
+ * repo, published at claude.ai/code/artifact/f0be8b6c.
  *
  * The twelve-month rate is the headline, because that is the basis every
  * apartment advertises on and the only number a student compares. The
- * nine-month academic year is sold as an upgrade on top of it, and the card
- * widens that premium from $50 to $200-$300 precisely so it is worth selling.
+ * nine-month academic year is sold as an upgrade on top of it.
  *
- * Private rates are floors: the card runs five tiers from Entry (105, 280) up
- * to Top (270, 275). The site quotes the Entry rate and the tier is settled in
- * conversation once a room is chosen.
+ * Note what that means here: the card holds every twelve-month rate at or
+ * above today's, so the public headline does not move. The whole increase
+ * lands on the nine-month term, which is the one the card wants to be
+ * expensive -- it would rather fill the year than the academic term.
+ *
+ * Both tiers below are floors. Privates run five tiers from Entry (105, 280)
+ * up to Top (270, 275); doubles run three, with 350 and 355 carrying a premium
+ * for being newly split rather than larger. The site quotes the entry rate of
+ * each and the tier is settled in conversation once a room is chosen.
  *
  * Room 340 is the only dorm room in the building and the card does not price
  * it, because the card assumes it converts to three private rooms. The dorm
@@ -36,8 +39,10 @@ export interface RoomTier {
 export type TierKey = 'private' | 'double' | 'dorm';
 
 export const pricing: Record<TierKey, RoomTier> = {
-  private: { academic: 1645, full: 1345, from: true },
-  double: { academic: 1195, full: 995, from: false },
+  // Entry tier: 105, 280. Runs up to Top (270, 275) at 1945 / 1745.
+  private: { academic: 1745, full: 1545, from: true },
+  // Standard tier: the eleven unmeasured rooms. 350 and 355 sit above it.
+  double: { academic: 1245, full: 1095, from: true },
   // Not on the new card — see the note above. 2026-27 figures, pending 340's survey.
   dorm: { academic: 995, full: 945, from: false },
 };
